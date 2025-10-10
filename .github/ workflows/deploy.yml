@@ -55,6 +55,6 @@ jobs:
         key: ${{ GIT_SECRET }}
         script: |
           docker load < python_ko.tar
-          docker stop python_ko_container || true
-          docker rm python_ko_container || true
-          docker run -d -p 5000:5000 --name python_ko_container python_ko
+          docker stop python_ko || true
+          docker rm python_ko || true
+          docker run -d -p 5000:5000 python_ko
