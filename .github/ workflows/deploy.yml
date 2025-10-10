@@ -43,7 +43,7 @@ jobs:
       with:
         host: ${{ 18.215.149.2 }}
         username: ubuntu
-        key: ${{ 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 }}
+        key: ${{ GIT_SECRET }}
         source: "python_ko.tar"
         target: "/home/ubuntu/"
 
@@ -52,7 +52,7 @@ jobs:
       with:
         host: ${{ 18.215.149.2 }}
         username: ubuntu
-        key: ${{ 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 }}
+        key: ${{ GIT_SECRET }}
         script: |
           docker load < python_ko.tar
           docker stop python_ko_container || true
