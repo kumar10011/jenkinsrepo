@@ -3,9 +3,6 @@ FROM python:3.12-slim as builder
 
 WORKDIR /app
 
-# Upgrade pip first
-RUN pip install --upgrade pip
-
 # Copy only requirements to leverage Docker cache
 COPY requirements.txt .
 
