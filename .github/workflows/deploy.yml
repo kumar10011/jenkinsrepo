@@ -41,7 +41,7 @@ jobs:
       - name: Copy Docker image to EC2
         uses: appleboy/scp-action@master
         with:
-          host: 18.215.149.2           # EC2 public IP
+          host: 18.208.221.69      
           username: ubuntu
           key: ${{ secrets.GIT_SECRET }}   # Your private key stored as secret
           source: "python_ko.tar"
@@ -50,7 +50,7 @@ jobs:
       - name: Deploy Docker container on EC2
         uses: appleboy/ssh-action@master
         with:
-          host: 18.215.149.2
+          host: 18.208.221.69
           username: ubuntu
           key: ${{ secrets.GIT_SECRET }}
           script: |
