@@ -61,8 +61,4 @@ jobs:
             docker rm python_ko_container || true
             echo "Running new container..."
             docker run -d -p 3000:3000 --name python_ko_container python_ko
-            echo "Check running containers:"
-            docker ps -a
-            echo "Check Docker images:"
-            docker images
 
