@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine
 
 # Upgrade pip first (optional but recommended)
 
@@ -11,7 +11,6 @@ WORKDIR /app
 COPY . .
 
 # Expose port 3000 (matching your Flask app)
-EXPOSE 3000
 
 # Run the app
 CMD ["python", "app.py"]
