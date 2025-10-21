@@ -11,25 +11,25 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Docker image...'
-                sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'docker run --rm ${IMAGE_NAME}:${IMAGE_TAG} pytest'
+                sh "docker run --rm ${IMAGE_NAME}:${IMAGE_TAG} pytest"
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                sh '''
+                sh """
                     docker stop ${CONTAINER_NAME} || true
                     docker rm ${CONTAINER_NAME} || true
                     docker run -d -p 8080:8080 --name ${CONTAINER_NAME} ${IMAGE_NAME}:${IMAGE_TAG}
-                '''
+                  """
             }
         }
     }
