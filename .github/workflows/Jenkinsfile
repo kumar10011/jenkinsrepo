@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -19,7 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'docker run --rm ${IMAGE_NAME}:${IAMGE_TAG} pytest'
+                sh 'docker run --rm ${IMAGE_NAME}:${IMAGE_TAG} pytest'
             }
         }
 
@@ -27,9 +26,9 @@ pipeline {
             steps {
                 echo 'Deploying application...'
                 sh '''
-                    docker stop ${python_app_container} || true
-                    docker rm ${python_app_container} || true
-                    docker run -d -p 8080:8080 --name ${python_app_container} ${IMAGE_NAME}:${IMAGE_TAG}
+                    docker stop ${CONTAINER_NAME} || true
+                    docker rm ${CONTAINER_NAME} || true
+                    docker run -d -p 8080:8080 --name ${CONTAINER_NAME} ${IMAGE_NAME}:${IMAGE_TAG}
                 '''
             }
         }
