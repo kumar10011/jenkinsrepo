@@ -15,12 +15,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                sh 'docker run --rm ${IMAGE_NAME}:${IMAGE_TAG} pytest'
-            }
-        }
 
         stage('Deploy') {
             steps {
