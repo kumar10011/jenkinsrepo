@@ -1,5 +1,5 @@
 pipeline {
-    agent ant
+    agent any
 
     environment {
         IMAGE_NAME = "python_app"
