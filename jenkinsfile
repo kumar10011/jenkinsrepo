@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent anti
 
     environment {
         IMAGE_NAME = "python_app"
@@ -35,9 +35,12 @@ pipeline {
     }
 
     post {
-        always {
+        success {
             echo 'Pipeline completed.'
         }
+	failure {
+	    echo 'pipeline failed'
+		}
     }
 }
 
